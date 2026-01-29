@@ -2,6 +2,27 @@
 
 A full-stack web application that helps business owners assess their succession planning readiness through a smart questionnaire, then generates personalized action plans powered by Claude AI.
 
+## What It Does
+
+**SuccessionReady** helps business owners figure out if they're prepared to eventually hand off or sell their business.
+
+**How it works:**
+
+1. **Answer questions** - You fill out a short questionnaire about your business (size, industry, how long you've been running it) and your current planning situation (do you have a successor picked? do you have legal documents in place?)
+
+2. **AI analyzes your situation** - Claude AI reviews your answers and calculates a "readiness score" from 0-100
+
+3. **Get a personalized report** - You receive:
+   - Your score with an explanation
+   - Critical gaps (what's missing)
+   - A prioritized action checklist (what to do first)
+   - Key risks to watch out for
+   - Recommended next steps by timeframe
+
+4. **Save your results** - Download as PDF or email to yourself
+
+**Why it matters:** Most business owners don't plan for succession until it's too late. This tool gives them a quick reality check and a clear roadmap to get prepared—whether they're passing the business to family, selling to employees, or finding an outside buyer.
+
 ## Features
 
 - **Smart Questionnaire**: Multi-section assessment covering business fundamentals, ownership structure, and planning status
