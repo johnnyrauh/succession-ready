@@ -34,18 +34,26 @@ A full-stack web application that helps business owners assess their succession 
 
 ## Tech Stack
 
-### Frontend
-- React 18 with TypeScript
-- Vite for fast builds
-- Tailwind CSS for styling
-- React Router for navigation
-- react-to-print for PDF export
+### Frontend (what you see in the browser)
+- **React** - A popular toolkit for building interactive web pages. It's like LEGO blocks for websites—you build small pieces (buttons, forms, cards) and snap them together.
+- **TypeScript** - JavaScript with training wheels. It catches mistakes before they become problems.
+- **Tailwind CSS** - A shortcut system for styling. Instead of writing custom design code, you use pre-made classes like "make this blue" or "add padding."
+- **Vite** - A tool that bundles all your code and makes the site load fast.
 
-### Backend
-- Node.js with Express
-- TypeScript
-- Anthropic SDK (Claude claude-sonnet-4-20250514)
-- express-rate-limit for abuse prevention
+### Backend (the server that does the thinking)
+- **Node.js + Express** - The engine that runs behind the scenes. When you submit the questionnaire, Express receives it, processes it, and sends back results.
+- **Anthropic SDK** - The connection to Claude AI. It sends your answers to Claude and gets back the personalized analysis.
+
+### How they talk to each other
+1. You fill out the form (React)
+2. The form sends your answers to the server (Express)
+3. The server asks Claude AI to analyze them (Anthropic SDK)
+4. Claude sends back your score and recommendations
+5. The server passes that to the frontend
+6. React displays your results
+
+### Hosting
+- **Vercel** - A service that puts your website on the internet. It handles all the server stuff so you don't have to.
 
 ## Project Structure
 
