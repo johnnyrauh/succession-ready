@@ -138,12 +138,14 @@ export default function Landing() {
             <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
               The assessment takes about 5 minutes and you'll receive your personalized results immediately.
             </p>
-            <Button
-              variant="white"
-              onClick={() => navigate('/assessment')}
-            >
-              Start Free Assessment
-            </Button>
+            <div className="flex justify-center">
+              <Button
+                variant="white"
+                onClick={() => navigate('/assessment')}
+              >
+                Start Free Assessment
+              </Button>
+            </div>
           </div>
         </section>
       </main>
