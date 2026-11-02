@@ -3,6 +3,9 @@ import Anthropic from '@anthropic-ai/sdk';
 
 const anthropic = new Anthropic();
 
+// Vercel bundles this file on its own; keep in sync with src/config.ts.
+const CLAUDE_MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5';
+
 interface AssessmentRequest {
   businessFundamentals: {
     businessType: string;
@@ -156,13 +159,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const prompt = buildAssessmentPrompt(req.body);
 
       const message = await anthropic.messages.create({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 4096,
+        model: CLAUDE_MODEL,
+        max_tokens: 16000,
         messages: [{ role: 'user', content: prompt }],
       });
 
-      const content = message.content[0];
-      if (content.type !== 'text') {
+      const content = message.content.find((block) => block.type === 'text');
+      if (!content || content.type !== 'text') {
         throw new Error('Unexpected response type from Claude');
       }
 

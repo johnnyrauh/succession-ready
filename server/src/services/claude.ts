@@ -1,6 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { AssessmentRequest, AssessmentResponse } from '../types/index.js';
 import { buildAssessmentPrompt } from '../prompts/assessment.js';
+import { CLAUDE_MODEL } from '../config.js';
 
 const anthropic = new Anthropic();
 
@@ -8,8 +9,8 @@ export async function generateAssessment(data: AssessmentRequest): Promise<Asses
   const prompt = buildAssessmentPrompt(data);
 
   const message = await anthropic.messages.create({
-    model: 'claude-sonnet-4-20250514',
-    max_tokens: 4096,
+    model: CLAUDE_MODEL,
+    max_tokens: 16000,
     messages: [
       {
         role: 'user',
@@ -18,8 +19,8 @@ export async function generateAssessment(data: AssessmentRequest): Promise<Asses
     ],
   });
 
-  const content = message.content[0];
-  if (content.type !== 'text') {
+  const content = message.content.find((block) => block.type === 'text');
+  if (!content || content.type !== 'text') {
     throw new Error('Unexpected response type from Claude');
   }
 
